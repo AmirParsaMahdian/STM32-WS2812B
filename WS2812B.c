@@ -19,7 +19,6 @@ void WS2812B_Init(void)
 {	
 	// ##### TIM16 (WS2812B) #####
 	RCC->APB2ENR |= RCC_APB2ENR_TIM16EN; /* Enable TIM16 clock */
-	RCC->AHBENR |= RCC_AHBENR_DMA1EN; /* Enable DMA1 clock */
 	
 	TIM16->PSC = 0;
 	TIM16->ARR = 39;
@@ -40,7 +39,7 @@ void WS2812B_Init(void)
 	while((TIM16->EGR & TIM_EGR_UG) == TIM_EGR_UG); /* wait until the RESET of UG bit*/
 	/* Enable UEV by setting UG bit to load data from preload to active registers */
 	TIM16->EGR |= TIM_EGR_UG;
-	TIM16->BDTR |= TIM_BDTR_MOE; /* Enable the TIM3 Main Output */
+	TIM16->BDTR |= TIM_BDTR_MOE; /* Enable the TIM16 Main Output */
 	TIM16->CCER |= TIM_CCER_CC1E; /* Enable capture/compare 1 output */
 }
 

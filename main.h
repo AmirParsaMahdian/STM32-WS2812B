@@ -5,6 +5,7 @@
 #include "RCC.h"
 #include "GPIO.h"
 #include "TIM.h"
+#include "DMA.h"
 
 #include "WS2812B.h"
 

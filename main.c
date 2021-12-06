@@ -9,6 +9,7 @@ int main(void)
 	SysTick_Config(SystemCoreClock / 1000);
 	NVIC_SetPriority(SysTick_IRQn, 14);
 	GPIO_Init();
+	DMA_Init();
 	
 	WS2812B_Init();
 	
@@ -32,5 +33,6 @@ int main(void)
 		
 		for (uint8_t i = 0; i < LED_NUM; i++) WS_Queue(i, 50, 0, 100);
 		WS_Send();
+		TIM_Delay(500);
 	}
 }
